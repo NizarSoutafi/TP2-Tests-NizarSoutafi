@@ -25,11 +25,26 @@ public class Main {
                 .modelName("gemini-1.5-flash")
                 .apiKey(System.getenv("GEMINI_KEY"))
                 .build();
-        //Test 1
+    /*    //Test 1
         String message = "Explain Quantum MachineLearning";
 
         String stringResponce = model.generate(message);
 
-        System.out.println(stringResponce);
+        System.out.println(stringResponce);*/
+
+
+        /* // Test 2
+        String texteATraduire = "Boujour, comment allez vous.";
+
+        Prompt prompt = PromptTemplate
+                .from("Traduire en {{langue}} ce texte : {{text}}")
+                .apply(Map.of(
+                        "langue", "anglais",
+                        "text", texteATraduire
+                ));
+
+        String responce = model.generate(prompt.text());
+        System.out.println(responce); */
+
     }
 }
