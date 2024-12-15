@@ -46,5 +46,27 @@ public class Main {
         String responce = model.generate(prompt.text());
         System.out.println(responce); */
 
+        // Test 3
+
+        EmbeddingModel embeddingModel = GoogleAiEmbeddingModel.builder()
+                .modelName("text-embedding-004")
+                .apiKey(System.getenv("GEMINI_KEY"))
+                .maxRetries(2)
+                .taskType(GoogleAiEmbeddingModel.TaskType.SEMANTIC_SIMILARITY)
+                .titleMetadataKey("")
+                .outputDimensionality(300)
+                .timeout(Duration.ofSeconds(15))
+                .logRequestsAndResponses(true)
+                .build();
+
+
+        String text1 = "More fish";
+        String text2 = "Sea";
+
+        Embedding embeddingText1 = embeddingModel.embed(text1).content();
+        Embedding embeddingText2 = embeddingModel.embed(text2).content();
+
+        System.out.println("cosine similarity between text1 and text2 is : " + CosineSimilarity.between(embeddingText1, embeddingText2));
+
     }
 }
